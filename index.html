@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/materialize.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        
+        <!-- In case we use D3 library for the animted graphs etc (really nice library) -->
+        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    </head>
+    
+    
+    <body>
+        
+<!-- HEADER -->
+        <div id="header">
+            <div>
+                <a href="index.html" id="logo"><img src="images/Gemeente_Amsterdam-logo2.png" alt="Logo"></a>
+            </div>
+	   </div>
+        
+<!-- MAIN CONTENT -->
+<!-- Page Layout here -->
+<div class="container">
+    <div class="row">
+
+        <div id="sidenav" class="col s3">
+            <!-- Grey navigation panel -->
+            <ul class="nav-stacked">
+                <h6 class="apd">Mixing Booth</h6>
+                <li class="active">
+                    <!-- <li class="current"> -->
+                    <a href="#predictions">Predictions</a>
+                </li>
+                <li>
+                    <a href="#adjustable_data">Adjustable Data</a>
+                </li>
+                <li>
+                    <a href="#results">Results</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="main-content" class="col s9">
+            <!-- Teal page content  -->
+            <div id="title">
+                <h6 class="apd">Mixing Booth : Dashboard</h6>
+                <h4>Overview</h4>
+            </div>
+            <hr>
+
+            <!-- PREDICTIONS -->
+            <div id="predictions">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card-panel custom-red-bg">
+                              <h3>Population</h3>
+                            <select>
+                                <option>Dutch</option>
+                                <option>Surinaams</option>
+                                <option>Turkish</option>
+                                <option>Westerners</option>
+                                <option>Non westerners</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card-panel custom-red-bg">
+                              <h3>Income</h3>
+                            <select>
+                                <option>100000 > 20000</option>
+                                <option>210000 > 30000</option>
+                                <option>310000 > 40000</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE DATA -->
+            <div id="adjustable_data">
+
+            </div>
+
+            <!-- RESULTS -->
+            <div id="results">
+
+                <h2></h2>
+
+                <div id="graphs">
+
+                </div>
+
+            </div>
+
+            <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+                <a class="btn-floating btn-large custom-red-bg">
+                    <i class="large material-icons"></i>
+                </a>
+                <ul>
+                    <li><a class="btn-floating red"><i class="material-icons"></i></a></li>
+                    <li><a class="btn-floating yellow darken-1"><i class="material-icons"></i></a></li>
+                    <li><a class="btn-floating green"><i class="material-icons"></i></a></li>
+                    <li><a class="btn-floating blue"><i class="material-icons"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/main.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,210 @@
+body
+{
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    background-color: #272623;
+}
+
+li a
+{
+    margin: 0;
+    -webkit-filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.8));
+    filter:         drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.8));
+}
+
+h1, h2, h3, p, #predictions select, #predictions button
+{
+    margin: 0;
+    -webkit-filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.2));
+    filter:         drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.2));
+}
+
+<!--
+select option:active, select option:hover
+{
+    outline-color: rgb(227, 6, 19);
+    background-color: rgb(227, 6, 19);
+}
+
+-->
+
+::selection {
+    background: rgb(227, 6, 19); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: rgb(227, 6, 19); /* Gecko Browsers */
+}
+
+#header
+{
+<!-- background: url(../images/bg-pattern.jpg) repeat; -->
+    border-bottom: 1px solid #000000;
+    padding: 3em 2em;
+    height: 160px;
+    position: relative;
+<!-- background-color: #272623; -->
+
+}
+
+#header div a#logo
+{
+    display: block;
+    float: left;
+}
+
+#header div a#logo img
+{
+<!-- width: 70%;
+height: 70%; -->
+
+}
+
+#logo
+{
+    -webkit-filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.8));
+    filter:         drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.8));
+}
+
+#header div ul
+{
+    list-style: none;
+    overflow: hidden;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    bottom: 2em;
+    right: 3em;
+}
+
+#header div ul li
+{
+    float: left;
+    padding: 0 20px;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+#header div ul li a
+{
+    font-weight: 700;
+}
+
+#header div ul li a:hover
+{
+    font-weight: 700;
+    color: rgb(227, 6, 19);
+}
+
+#header div ul li a
+{
+    text-decoration: none;
+    color: #FFFBEF;
+}
+
+#title
+{
+    text-align: center;
+}
+
+#title, #adjustable_data
+{
+    margin: 0;
+    background-color: #635F51;
+    padding: 2em 3em;
+}
+
+
+#predictions select
+{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#predictions button
+{
+    font-size: 1em;
+    font-weight: bold;
+    border: 1px;
+    border-radius: 20px;
+    background-color: #272623;
+    width: 100px;
+    padding: 5px 10px;
+    color: white;
+    border: 2px solid black;
+    margin-left: 1em;
+}
+
+#predictions button:hover
+{
+    background-color: black;
+}
+
+
+#predictions, #results
+{
+    margin: 0;
+    background-color: #858170;
+    padding: 2em 3em;
+}
+
+.size_button_left
+{
+    border-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 30px;
+    height: 20px;
+    font-weight: bold;
+    background-color: #272623;
+    color: white;
+    float: left;
+    margin: 5px;
+}
+
+.size_button_right
+{
+    border-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 30px;
+    height: 20px;
+    font-weight: bold;
+    background-color: #272623;
+    color: white;
+    float: right;
+    margin: 5px;
+}
+
+.tables
+{
+    margin-top: 1em;
+    -webkit-filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.8));
+    filter:         drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.8));
+}
+
+.tables th, .tables td:first-child
+{
+    background-color: rgba(227, 6, 19, 0.6);
+}
+
+.tables td
+{
+    background-color: rgba(240, 240, 240, 0.6);
+}
+
+.tables th, .tables td
+{
+    border: 2px solid black;
+    text-align: center;
+    width: 15em;
+}
+
+.tables th:hover, .tables td:first-child:hover
+{
+    background-color: rgba(227, 6, 19, 1);
+}
+
+.tables td:hover
+{
+    background-color: rgba(240, 240, 240, 1);
+} 

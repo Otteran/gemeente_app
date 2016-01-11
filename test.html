@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- In case we use D3 library for the animted graphs etc (really nice library)
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Font accessed from https://www.google.com/fonts -->
+    <style type="text/css">${demo.css}</style>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,400' rel='stylesheet' type='text/css'>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+        {{#issues}}
+        <div class="entry">
+            <div class="folio">
+                <img src="img/small/ing_help_small.png" alt="">
+            </div>
+            <div class="description">
+                <h3>{{title}}</h3>
+                {{description}}
+                <div class="download-div"><a class="download"></a></div>
+            </div>
+        </div>
+        {{/issues}}
+    </script>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+<div id="header">
+    <div>
+        <a href="index.html" id="logo"><img src="images/Gemeente_Amsterdam-logo2.png" alt="Logo"></a>
+        <ul>
+            <!--
+            <li>
+                <a href="#past_data">Past Data</a>
+            </li>
+            -->
+            <li>
+                <!-- <li class="current"> -->
+                <a href="#predictions">Predictions</a>
+            </li>
+            <li>
+                <a href="#adjustable_data">Adjustable Data</a>
+            </li>
+            <li>
+                <a href="#results">Results</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content">
+
+    <div id="title">
+        <h1>Mixing Booth</h1>
+        <p>Adjust details from below to see the housing predictions for the upcoming years.</p>
+    </div>
+
+    <!-- PREDICTIONS -->
+
+    <!--
+     <div id="past_data">
+
+          <h2>Past Data</h2>
+
+         <table class="tables">
+
+              <thead>
+                  <tr>
+                      <th>Population Group</th>
+                      <th>2011</th>
+                      <th>2012</th>
+                      <th>2013</th>
+                      <th>2014</th>
+                      <th>2015</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                  <tr>
+                      <td>Total</td>
+                      <td>780559</td>
+                      <td>790044</td>
+                      <td>799442</td>
+                      <td>811185</td>
+                      <td>822272</td>
+                  </tr>
+                  <tr>
+                      <td>Surinamese</td>
+                      <td>68971</td>
+                      <td>68538</td>
+                      <td>67919</td>
+                      <td>67490</td>
+                      <td>66623</td>
+                  </tr>
+                  <tr>
+                      <td>Antilleans</td>
+                      <td>11777</td>
+                      <td>11891</td>
+                      <td>11993</td>
+                      <td>12088</td>
+                      <td>12125</td>
+
+                  </tr>
+                  <tr>
+                      <td>Turkish</td>
+                      <td>41075</td>
+                      <td>41519</td>
+                      <td>41981</td>
+                      <td>42211</td>
+                      <td>42358</td>
+                  </tr>
+                  <tr>
+                      <td>Moroccans</td>
+                      <td>70646</td>
+                      <td>71460</td>
+                      <td>72330</td>
+                      <td>73311</td>
+                      <td>74210</td>
+                  </tr>
+                  <tr>
+                      <td>Non-Westerners</td>
+                      <td>80682</td>
+                      <td>82984</td>
+                      <td>84854</td>
+                      <td>86967</td>
+                      <td>90100</td>
+                  </tr>
+                  <tr>
+                      <td>Westerners</td>
+                      <td>119373</td>
+                      <td>122839</td>
+                      <td>125720</td>
+                      <td>129025</td>
+                      <td>134124</td>
+                  </tr>
+                  <tr>
+                      <td>Dutch</td>
+                      <td>388035</td>
+                      <td>390813</td>
+                      <td>394645</td>
+                      <td>400093</td>
+                      <td>402732</td>
+                  </tr>
+                  <tr>
+                      <td>Small Apartments</td>
+                      <td>153812</td>
+                      <td>153164</td>
+                      <td>157777</td>
+                      <td>155832</td>
+                      <td>156298</td>
+                  </tr>
+                  <tr>
+                      <td>Medium Apartments</td>
+                      <td>109560</td>
+                      <td>109765</td>
+                      <td>112496</td>
+                      <td>113231</td>
+                      <td>113894</td>
+                  </tr>
+                  <tr>
+                      <td>Big Apartments</td>
+                      <td>124605</td>
+                      <td>127363</td>
+                      <td>136817</td>
+                      <td>140667</td>
+                      <td>143278</td>
+                  </tr>
+                  <tr>
+                      <td>Social</td>
+                      <td>197465</td>
+                      <td>195765</td>
+                      <td>194293</td>
+                      <td>193396</td>
+                      <td>187184</td>
+                  </tr>
+                  <tr>
+                      <td>Rent</td>
+                      <td>101785</td>
+                      <td>102592</td>
+                      <td>104921</td>
+                      <td>105945</td>
+                      <td>114679</td>
+                  </tr>
+                  <tr>
+                      <td>Bought</td>
+                      <td>107422</td>
+                      <td>110393</td>
+                      <td>111690</td>
+                      <td>114149</td>
+                      <td>115233</td>
+                  </tr>
+
+              </tbody>
+
+          </table>
+
+     </div>
+     -->
+
+    <!-- PREDICTIONS -->
+    <div id="predictions">
+
+        <div style="float: left">
+            <h2>Predictions</h2>
+
+            <h3>Year:</h3>
+            <select id="selectPopulation" onchange="changePrediction(this)">
+                <option value="groups">Groups</option>
+                <option value="age">Age</option>
+                <option value="income">Income</option>
+            </select>
+
+
+            <button type="button" onClick="window.location.reload()">Refresh</button>
+
+            <table class="tables">
+
+                <thead>
+                <tr>
+                    <th>Population Group</th>
+                    <th>Population Amount</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <!-- Loop 1 -->
+                <tr>
+                    <!-- Loop 2 -->
+                    <td>Surinamese</td>
+                    <td>67919</td>
+                </tr>
+                <tr>
+                    <td>Antilleans</td>
+                    <td>11993</td>
+                </tr>
+                <tr>
+                    <td>Turkish</td>
+                    <td>41981</td>
+                </tr>
+                <tr>
+                    <td>Moroccans</td>
+                    <td>72330</td>
+                </tr>
+                <tr>
+                    <td>Non-Westerners</td>
+                    <td>84854</td>
+                </tr>
+                <tr>
+                    <td>Westerners</td>
+                    <td>125720</td>
+                </tr>
+                <tr>
+                    <td>Dutch</td>
+                    <td>394645</td>
+                </tr>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div id="container_pop" style="min-width: 610px; height: 300px; margin: 40px auto; float: left; margin-left: 9em;"></div>
+
+    </div>
+<div style="clear: both;"></div>
+    <!-- INTERACTIVE DATA -->
+    <div id="adjustable_data">
+        <h2>Adjustable Data</h2>
+
+        <div style="float: left">
+            <h2><select>
+                <option value="2015">2015</option>
+                <option value="2020">2020</option>
+                <option value="2025">2025</option>
+                <option value="2030">2030</option>
+                <option value="2035">2035</option>
+            </select></h2>
+            <table class="tables">
+
+                <thead>
+                <tr>
+                    <th>Population Group</th>
+                    <th>Amount from 2013</th>
+                    <th>Interactive Amount</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <!-- Loop 1 -->
+                <tr>
+                    <!-- Loop 2 -->
+                    <td>Students</td>
+                    <td>6730</td>
+                    <td><button type="button" class="size_button_left" onclick="">-</button> <span id="studNum" class="interactive_num">6730</span> <button type="button" class="size_button_right" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Surinamese</td>
+                    <td>67919</td>
+                    <td><button type="button" class="size_button_left groups" onclick="">-</button> <span id="surNum" class="interactive_num">67919</span> <button type="button" class="size_button_right groups" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Antilleans</td>
+                    <td>11993</td>
+                    <td><button type="button" class="size_button_left groups" onclick="">-</button> <!-- <input type="number" class="interactive_num" value="11993"> --> <span id="antNum" class="interactive_num">11993</span> <button type="button" class="size_button_right groups" onclick="">+</button></td>                        </tr>
+                <tr>
+                    <td>Turkish</td>
+                    <td>41981</td>
+                    <td><button type="button" class="size_button_left groups" onclick="">-</button> <span id="turNum" class="interactive_num">41981</span> <button type="button" class="size_button_right groups" onclick="">+</button></td>                        </tr>
+                <tr>
+                    <td>Moroccans</td>
+                    <td>72330</td>
+                    <td><button type="button" class="size_button_left groups" onclick="">-</button> <span id="morNum" class="interactive_num">72330</span> <button type="button" class="size_button_right groups" onclick="">+</button></td>                        </tr>
+                <tr>
+                    <td>Non-Westerners</td>
+                    <td>84854</td>
+                    <td><button type="button" class="size_button_left groups" onclick="">-</button> <span id="nwNum" class="interactive_num">84854</span> <button type="button" class="size_button_right groups" onclick="">+</button></td>                        </tr>
+                <tr>
+                    <td>Westerners</td>
+                    <td>125720</td>
+                    <td><button type="button" class="size_button_left groups" onclick="">-</button> <span id="wesNum" class="interactive_num">125720</span> <button type="button" class="size_button_right groups" onclick="">+</button></td>                        </tr>
+                <tr>
+                    <td>Dutch</td>
+                    <td>394645</td>
+                    <td><button type="button" class="size_button_left groups" onclick="">-</button><span id="dutNum" class="interactive_num">394645</span><button type="button" class="size_button_right groups" onclick="">+</button></td>                        </tr>
+
+                <tr>
+                    <td>Age 0-19</td>
+                    <td>148808</td>
+                    <td><button type="button" class="size_button_left age" onclick="">-</button><span id="a019" class="interactive_num">148808</span><button type="button" class="size_button_right age" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Age 20-24</td>
+                    <td>61404</td>
+                    <td><button type="button" class="size_button_left age" onclick="">-</button><span id="a2024" class="interactive_num">61404</span><button type="button" class="size_button_right age" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Age 25-29</td>
+                    <td>74696</td>
+                    <td><button type="button" class="size_button_left age" onclick="">-</button><span id="a2529" class="interactive_num">74696</span><button type="button" class="size_button_right age" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Age 30-39</td>
+                    <td>130915</td>
+                    <td><button type="button" class="size_button_left age" onclick="">-</button><span id="a3039" class="interactive_num">130915</span><button type="button" class="size_button_right age" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Age 40-64</td>
+                    <td>448540</td>
+                    <td><button type="button" class="size_button_left age" onclick="">-</button><span id="a4064" class="interactive_num">448540</span><button type="button" class="size_button_right age" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Age 65_plus</td>
+                    <td>84115</td>
+                    <td><button type="button" class="size_button_left age" onclick="">-</button><span id="a65plus" class="interactive_num">84115</span><button type="button" class="size_button_right age" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Low income</td>
+                    <td>234285</td>
+                    <td><button type="button" class="size_button_left income" onclick="">-</button><span id="lowInc" class="interactive_num">234285</span><button type="button" class="size_button_right income" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>Low EU</td>
+                    <td>118929</td>
+                    <td><button type="button" class="size_button_left income" onclick="">-</button><span id="lowEUInc" class="interactive_num">118929</span><button type="button" class="size_button_right income" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>EU average</td>
+                    <td>106254</td>
+                    <td><button type="button" class="size_button_left income" onclick="">-</button><span id="EUavInc" class="interactive_num">106254</span><button type="button" class="size_button_right income" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>43785 - 1.5 modaal</td>
+                    <td>41024</td>
+                    <td><button type="button" class="size_button_left income" onclick="">-</button><span id="43785Inc" class="interactive_num">41024</span><button type="button" class="size_button_right income" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>1.5 modaal - 2 modaal</td>
+                    <td>69170</td>
+                    <td><button type="button" class="size_button_left income" onclick="">-</button><span id="15mInc" class="interactive_num">69170</span><button type="button" class="size_button_right income" onclick="">+</button></td>
+                </tr>
+                <tr>
+                    <td>2 modaal - above</td>
+                    <td>172837</td>
+                    <td><button type="button" class="size_button_left income" onclick="">-</button><span id="2mInc" class="interactive_num">172837</span><button type="button" class="size_button_right  income" onclick="">+</button></td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+        <div style="float: left; margin: 0 auto; margin-left: 2.5em;">
+            <h2>Results</h2>
+            <div id="container" style="min-width: 550px; height: 400px; margin: 0 auto; float: left;"></div>
+            <div id="container_two" style="min-width: 550px; height: 400px; margin: 0 auto;"></div>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+
+</div>
+<table id="datatable" style="display:none;">
+    <thead>
+    <tr>
+        <th></th>
+        <th>2015</th>
+        <th>2020</th>
+        <th>2025</th>
+        <th>2030</th>
+        <th>2035</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Surinamers</th>
+        <td>66623</td>
+        <td>64173</td>
+        <td>61167</td>
+        <td>58161</td>
+        <td>54507</td>
+    </tr>
+    <tr>
+        <th>Antillianen</th>
+        <td>12125</td>
+        <td>12320</td>
+        <td>12070.5</td>
+        <td>11821</td>
+        <td>11404</td>
+    </tr>
+    <tr>
+        <th>Turken</th>
+        <td>42358</td>
+        <td>44402</td>
+        <td>44879.5</td>
+        <td>45357</td>
+        <td>45193</td>
+    </tr>
+    <tr>
+        <th>Marokkanen</th>
+        <td>74210</td>
+        <td>77844</td>
+        <td>79255</td>
+        <td>80666</td>
+        <td>80281</td>
+    </tr>
+    <tr>
+        <th>overige niet-w</th>
+        <td>90100</td>
+        <td>107400</td>
+        <td>118723.5</td>
+        <td>130047</td>
+        <td>140083</td>
+    </tr>
+    <tr>
+        <th>westerse alloch	</th>
+        <td>134124</td>
+        <td>152232</td>
+        <td>160843</td>
+        <td>169454</td>
+        <td>176668</td>
+    </tr>
+    <tr>
+        <th>autochtonen</th>
+        <td>402732</td>
+        <td>412987</td>
+        <td>407719.5</td>
+        <td>402452</td>
+        <td>390542</td>
+    </tr>
+    </tbody>
+</table>
+<table id="datatable_two" style="display:none;">
+    <thead>
+    <tr>
+        <th></th>
+        <th>2015</th>
+        <th>2020</th>
+        <th>2025</th>
+        <th>2030</th>
+        <th>2035</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>low</th>
+        <td>247504</td>
+        <td>262279</td>
+        <td>266282</td>
+        <td>270285</td>
+        <td>270502</td>
+    </tr>
+    <tr>
+        <th>low_EUgrens</th>
+        <td>129919</td>
+        <td>137675</td>
+        <td>139776</td>
+        <td>141877</td>
+        <td>141991</td>
+    </tr>
+    <tr>
+        <th>Eugrens_43785</th>
+        <td>115940</td>
+        <td>122861</td>
+        <td>124737</td>
+        <td>126612</td>
+        <td>126713</td>
+    </tr>
+    <tr>
+        <th>43785_1.5Modaal</th>
+        <td>46047</td>
+        <td>48796</td>
+        <td>49541</td>
+        <td>50286</td>
+        <td>50326</td>
+    </tr>
+    <tr>
+        <th>1.5Modaal_2Modaal</th>
+        <td>76471</td>
+        <td>81036</td>
+        <td>82273</td>
+        <td>83510</td>
+        <td>83577</td>
+    </tr>
+    <tr>
+        <th>2Modaal_plus</th>
+        <td>206390</td>
+        <td>218711</td>
+        <td>222049</td>
+        <td>225387</td>
+        <td>225568</td>
+    </tr>
+    </tbody>
+</table>
+<table id="datatable_one" style="display:none;">
+    <thead>
+    <tr>
+        <th></th>
+        <th>2015</th>
+        <th>2020</th>
+        <th>2025</th>
+        <th>2030</th>
+        <th>2035</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>0_19</th>
+        <td>165538</td>
+        <td>175359</td>
+        <td>179750</td>
+        <td>179268</td>
+        <td>176582</td>
+    </tr>
+    <tr>
+        <th>20_24</th>
+        <td>68515</td>
+        <td>67511</td>
+        <td>65733</td>
+        <td>62377</td>
+        <td>61664</td>
+    </tr>
+    <tr>
+        <th>25_29</th>
+        <td>85166</td>
+        <td>88679</td>
+        <td>85966</td>
+        <td>81338</td>
+        <td>78493</td>
+    </tr>
+    <tr>
+        <th>30_39</th>
+        <td>142466</td>
+        <td>155922</td>
+        <td>159672</td>
+        <td>154739</td>
+        <td>149613</td>
+    </tr>
+    <tr>
+        <th>40_64</th>
+        <td>263053</td>
+        <td>272450</td>
+        <td>277394</td>
+        <td>276748</td>
+        <td>275443</td>
+    </tr>
+    <tr>
+        <th>65+</th>
+        <td>97534</td>
+        <td>111437</td>
+        <td>126999</td>
+        <td>143488</td>
+        <td>156882</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="js/handlebars.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
